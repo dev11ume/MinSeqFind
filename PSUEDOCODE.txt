@@ -1,0 +1,12 @@
+PSUEDO-CODE
+
+STEPS-
+1) Define all parameters and input files to execute run_minseqfind_1.
+2) run_minseqfind_1 executes minseqfind_1 function for the given parameters and files.
+3) minseqfind_1 function first creates a library model from the given library, model order and other parameters.
+4) Next sample file data is processed through init_data_process_v1 function.
+5) The data is then processed by counting k-mers or MinSeqs using get_counts_bgs_ng_v1 and get_counts_bgs_gp_v1. These functions also calculate the estimated library counts for these sequences using library model.
+6) Next the MinSeq counts are divided by the estimated counts in library and after some thresholding PWMs are obtained using get_pwm_from_minseq_v1 function.
+
+Further details are there in comments of the code itself.
+
