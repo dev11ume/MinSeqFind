@@ -52,7 +52,7 @@ while (nm<num_motifs_max)
     while cont_sub_len
         seed_mot_acgt(nm,itr)=get_index_from_seqs_withN_v1(seqsx_inx_c2(inx_pwm_seed(nm)),...
             all_len_c2(inx_pwm_seed(nm)),max_half_nmer);
-        num_Nsx=min(num_Ns,floor((l-length(seed_mot_acgt{nm,itr}))/2)-sub_len);
+        num_Nsx=min(num_Ns,floor((l-length(seed_mot_acgt{nm,itr}))/2))-sub_len;
         num_Nsx=max(num_Nsx,0);
         num_Nsx=min(num_Nsx,lLlib);
         num_Nsx=min(num_Nsx,lRlib);
