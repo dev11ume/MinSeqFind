@@ -54,8 +54,6 @@ while (nm<num_motifs_max)
             all_len_c2(inx_pwm_seed(nm)),max_half_nmer);
         num_Nsx=min(num_Ns,floor((l-length(seed_mot_acgt{nm,itr}))/2))-sub_len;
         num_Nsx=max(num_Nsx,0);
-        num_Nsx=min(num_Nsx,lLlib);
-        num_Nsx=min(num_Nsx,lRlib);
         seed_mot_acgt{nm,itr}=[repmat('N',1,num_Nsx) seed_mot_acgt{nm,itr} repmat('N',1,num_Nsx)];
         fprintf('%s\n',seed_mot_acgt{nm,itr});
         
