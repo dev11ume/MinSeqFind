@@ -89,7 +89,6 @@ int_pwm_seed_arr      =cell(l_max_cut_arr,1);
 inx_pwm_seed_arr      =cell(l_max_cut_arr,1);
 int_nu2x_c_arr2       =cell(l_max_cut_arr,1);
 seqsx_inx_c_arr       =cell(l_max_cut_arr,1);
-scores_sum20          =cell(l_max_cut_arr,1);
 int_seed_pwm_score    =cell(l_max_cut_arr,1);
 int_seed_calculated_arr    =cell(l_max_cut_arr,1);
 count_seed_arr    =cell(l_max_cut_arr,1);
