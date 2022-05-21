@@ -26,8 +26,10 @@ if ~isempty(find(gap~=0, 1))
     end
     for i=1:max_half_nmer
         inxx=find(seqs1(:,i)~='N');
-        seqs2(inxx,i+1:end)=seqs2(inxx,i:end-1);
-        seqs2(inxx,i)=seqs1(inxx,i);
+        if ~isempty(inxx)
+          seqs2(inxx,i+1:end)=seqs2(inxx,i:end-1);
+          seqs2(inxx,i)=seqs1(inxx,i);
+        end
     end
     seqs2x(gap~=0)=cellstr(seqs2);
 end
