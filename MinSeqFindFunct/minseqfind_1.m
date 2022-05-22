@@ -143,6 +143,6 @@ try
 catch
   save([File1(1:end-4) '-' LibFile(1:end-4) '-res1x.mat'],'-binary');
 end
-movefile([File1(1:end-4) '-' LibFile(1:end-4) '-res1x.mat'],[File1 '-' LibFile '-res1f.mat'],'f');
+movefile([File1(1:end-4) '-' LibFile(1:end-4) '-res1x.mat'],[File1(1:end-4) '-' LibFile(1:end-4) '-res1f.mat'],'f');
 
 end
