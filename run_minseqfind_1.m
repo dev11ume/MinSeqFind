@@ -68,9 +68,9 @@ for ii=1:length(TFs_file)
     end
     
     % RUN MINSEQ PROGRAM TO GET MINSEQS
-    % minseqfind_1(File1,LibFile,Llib,Rlib,param);
+    minseqfind_1(File1,LibFile,Llib,Rlib,param);
     
-    % movefile([TFs_file{ii} '-' Library_files{ii} '-res1f.mat'],[dir_nm '/' TFs_file{ii} '_' Library_files{ii} '/resf.mat']);   
+    movefile([TFs_file{ii} '-' Library_files{ii} '-res1f.mat'],[dir_nm '/' TFs_file{ii} '_' Library_files{ii} '/resf.mat']);   
     write_pwms_file_v1(dir_nm, [TFs_file{ii} '_' Library_files{ii}]);
     write_pwms_file_chen_v1(dir_nm, [TFs_file{ii} '_' Library_files{ii}]);
     write_minseq_to_file_v1(dir_nm, [TFs_file{ii} '_' Library_files{ii}],1,seq_to_print);
