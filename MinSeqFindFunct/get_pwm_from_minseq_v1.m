@@ -4,7 +4,7 @@ function [seed_mot_acgt,pwm_all,int_pwm_seed,inx_pwm_seed,scores_pwm,...
     int_seed_pwm_score,int_seed_calculated,count_seed]=get_pwm_from_minseq_v1(...
     seeds_to_cont2,int_nu2x_c,all_len_c,all_len_nox_c,num_Ns,count,...
     seqsx_inx_c,seqs_uq,l,Llib,Rlib,num_motifs_max,max_half_nmer,...
-    File2x,lib_nmer,min_ct,pow_factor,flip3to5,l_seqs_lib2,l_seqs2,lib_model_dat1)
+    File2x,lib_nmer,min_ct,pow_factor,flip3to5,l_seqs_lib2,l_seqs2,lib_model_dat1,strnums)
 lLlib=length(Llib);
 lRlib=length(Rlib);
 
@@ -122,14 +122,14 @@ while (nm<num_motifs_max)
         % GET BG FOR PWM
         if flip3to5
             bgft=get_lib_prediction_v1(fliplr(seed_mot_colp5nf_t),pwm_length,...
-                File2x,lib_nmer,l,fliplr(Rlib),fliplr(Llib),0,0,0,lib_model_dat1);
+                File2x,lib_nmer,l,fliplr(Rlib),fliplr(Llib),0,0,0,lib_model_dat1,strnums);
             bgrt=get_lib_prediction_v1(fliplr(seed_mot_colp5nr_t),pwm_length,...
-                File2x,lib_nmer,l,fliplr(Rlib),fliplr(Llib),0,0,0,lib_model_dat1);
+                File2x,lib_nmer,l,fliplr(Rlib),fliplr(Llib),0,0,0,lib_model_dat1,strnums);
         else
-            bgft=get_lib_prediction_v1(seed_mot_colp5nf_t,pwm_length,File2x,lib_nmer,l,'','',0,0,0,lib_model_dat1);
-            bgrt=get_lib_prediction_v1(seed_mot_colp5nr_t,pwm_length,File2x,lib_nmer,l,'','',0,0,0,lib_model_dat1);
-            bgft_seed=get_lib_prediction_v1(seed_mot_colp5nf_seed,pwm_length,File2x,lib_nmer,l,'','',0,0,0,lib_model_dat1);
-            bgrt_seed=get_lib_prediction_v1(seed_mot_colp5nr_seed,pwm_length,File2x,lib_nmer,l,'','',0,0,0,lib_model_dat1);
+            bgft=get_lib_prediction_v1(seed_mot_colp5nf_t,pwm_length,File2x,lib_nmer,l,'','',0,0,0,lib_model_dat1,strnums);
+            bgrt=get_lib_prediction_v1(seed_mot_colp5nr_t,pwm_length,File2x,lib_nmer,l,'','',0,0,0,lib_model_dat1,strnums);
+            bgft_seed=get_lib_prediction_v1(seed_mot_colp5nf_seed,pwm_length,File2x,lib_nmer,l,'','',0,0,0,lib_model_dat1,strnums);
+            bgrt_seed=get_lib_prediction_v1(seed_mot_colp5nr_seed,pwm_length,File2x,lib_nmer,l,'','',0,0,0,lib_model_dat1,strnums);
         end
         
         ctt=ctf+ctr;

@@ -34,6 +34,10 @@ enrich_perc_cut=param.enrich_perc_cut;
 weighted_enrich_perc_cut=param.weighted_enrich_perc_cut;
 
 max_cut=min(max_cut_arr);
+strnums=cell(20,1);
+for i=1:20
+  strnums{i}=num2str(i);
+end
 model_order_max=lib_nmer;
 if max_half_nmer~=-1
     model_order_max=min(lib_nmer,2*max_half_nmer-1);
@@ -72,12 +76,12 @@ max_gap=min(max_gap,l-2*min_half_nmer);
 if max_half_nmer==-1
     [ctsfr,ctsfl,bgsf,inx,all_len]=...
         get_counts_bgs_ng_v1(seq_colp5n,l,lib_nmer,count,File2x,...
-        min_nmer,max_nmer,max_cut,Llib,Rlib,flip3to5,lib_model_dat1);
+        min_nmer,max_nmer,max_cut,Llib,Rlib,flip3to5,lib_model_dat1,strnums);
     all_len_nox=all_len;
 else
     [ctsfr,ctsfl,bgsf,inx,all_len,all_len_nox]=...
         get_counts_bgs_gp_v1(seq_colp5n,l,lib_nmer,count,File2x,...
-        min_half_nmer,max_half_nmer,max_gap,max_cut,Llib,Rlib,gap_mod,flip3to5,lib_model_dat1);
+        min_half_nmer,max_half_nmer,max_gap,max_cut,Llib,Rlib,gap_mod,flip3to5,lib_model_dat1,strnums);
 end
 
 l_max_cut_arr         =length(max_cut_arr);
@@ -126,7 +130,7 @@ for i=1:l_max_cut_arr
                     int_seed_pwm_score{i},int_seed_calculated_arr{i},count_seed_arr{i}]=get_pwm_from_minseq_v1(...
                     seeds_to_cont2_arr{i},int_nu2x_c_arr2{i},all_len_c,all_len_nox_c,num_Ns,count,...
                     seqsx_inx_c_arr{i},seqs_uq,l,Llib,Rlib,num_motifs_max,max_half_nmer,File2x,...
-                    lib_nmer,min_ct,pow_factor,flip3to5,l_seqs_lib2,l_seqs2,lib_model_dat1);
+                    lib_nmer,min_ct,pow_factor,flip3to5,l_seqs_lib2,l_seqs2,lib_model_dat1,strnums);
             end
         end
     end

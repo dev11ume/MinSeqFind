@@ -2,7 +2,7 @@
 
 function [ctsfr,ctsfl,bgsf,inx,all_len]...
     =get_counts_bgs_ng_v1(seq_colp5n,l,lib_nmer,count,File2x,...
-    min_nmer,max_nmer,max_cut,Llib,Rlib,flip3to5,lib_model_dat1)
+    min_nmer,max_nmer,max_cut,Llib,Rlib,flip3to5,lib_model_dat1,strnums)
 fprintf('\nCounting Nmers and getting BG...\n');
 
 % Assuming no Ns IN seq_colp5n
@@ -85,9 +85,9 @@ for nmer=min_nmer:max_nmer
         seq_colp5n_bg=aa(cell2mat(seqs_bg)-64);
         if flip3to5 % FLIPPED AND EXCHANGED RLIB LLIB
             bg=get_lib_prediction_v1(fliplr(seq_colp5n_bg),tot_l,...
-                File2x,lib_nmer,l,fliplr(Rlib),fliplr(Llib),0,0,0,lib_model_dat1);
+                File2x,lib_nmer,l,fliplr(Rlib),fliplr(Llib),0,0,0,lib_model_dat1,strnums);
         else
-            bg=get_lib_prediction_v1(seq_colp5n_bg,tot_l,File2x,lib_nmer,l,Llib,Rlib,0,0,0,lib_model_dat1);
+            bg=get_lib_prediction_v1(seq_colp5n_bg,tot_l,File2x,lib_nmer,l,Llib,Rlib,0,0,0,lib_model_dat1,strnums);
         end
         
         bg_inx_rev=get_rev_inx_ng_v1(bg_inx,tot_l);
@@ -96,9 +96,9 @@ for nmer=min_nmer:max_nmer
         seq_colp5n_bg=aa(cell2mat(seqs_bg)-64);
         if flip3to5 % FLIPPED AND EXCHANGED RLIB LLIB
             bg_rev=get_lib_prediction_v1(fliplr(seq_colp5n_bg),tot_l,...
-                File2x,lib_nmer,l,fliplr(Rlib),fliplr(Llib),0,0,0,lib_model_dat1);
+                File2x,lib_nmer,l,fliplr(Rlib),fliplr(Llib),0,0,0,lib_model_dat1,strnums);
         else
-            bg_rev=get_lib_prediction_v1(seq_colp5n_bg,tot_l,File2x,lib_nmer,l,Llib,Rlib,0,0,0,lib_model_dat1);
+            bg_rev=get_lib_prediction_v1(seq_colp5n_bg,tot_l,File2x,lib_nmer,l,Llib,Rlib,0,0,0,lib_model_dat1,strnums);
         end
         
         cts=cts+ctsi;
