@@ -62,7 +62,7 @@ for i=1:l+l_Llib+l_Rlib-pwm_l+1
                         disp('error multi gaps');
                     end
                     gapx=ix4_diff(pos_gapi)-1;
-                    fname=[File2x num2str(lib_nmeri-1) '.order.model.' ...
+                    fname=[strrep(File2x,'.','_') num2str(lib_nmeri-1) '.order.model.' ...
                         num2str(strt) '_' num2str(pos_gapi) '_' num2str(gapx) '.txt'];
                 end
                 C=lib_model_dat1.(fname);
