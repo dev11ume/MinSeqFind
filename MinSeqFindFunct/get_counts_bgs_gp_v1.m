@@ -2,7 +2,7 @@
 
 function [ctsfr,ctsfl,bgsf,inx,all_len,all_len_nox]...
     =get_counts_bgs_gp_v1(seq_colp5n,l,lib_nmer,count,File2x,...
-    min_half_nmer,max_half_nmer,max_gap,max_cut,Llib,Rlib,gap_mod,flip3to5,lib_model_dat1,strnums)
+    min_half_nmer,max_half_nmer,max_gap,max_cut,Llib,Rlib,gap_mod,flip3to5,lib_model_dat1,strnums_plus)
 fprintf('\nCounting Nmers and getting BG...\n');
 
 % NO Ns IN seq_colp5n
@@ -115,10 +115,10 @@ for half_nmeri=min_half_nmer:max_half_nmer
                 seq_colp5n_bg=aa(cell2mat(seqs_bg)-64);
                 if flip3to5 % FLIPPED AND EXCHANGED RLIB LLIB, CHANGED half_nmeri
                     bg=get_lib_prediction_v1(fliplr(seq_colp5n_bg),tot_l,...
-                        File2x,lib_nmer,l,fliplr(Rlib),fliplr(Llib),j,half_nmerj,gap_mod,lib_model_dat1,strnums);
+                        File2x,lib_nmer,l,fliplr(Rlib),fliplr(Llib),j,half_nmerj,gap_mod,lib_model_dat1,strnums_plus);
                 else
                     bg=get_lib_prediction_v1(seq_colp5n_bg,tot_l,File2x,...
-                        lib_nmer,l,Llib,Rlib,j,half_nmeri,gap_mod,lib_model_dat1,strnums);
+                        lib_nmer,l,Llib,Rlib,j,half_nmeri,gap_mod,lib_model_dat1,strnums_plus);
                 end
                 
                 % FOR REVERSE
@@ -128,10 +128,10 @@ for half_nmeri=min_half_nmer:max_half_nmer
                 seq_colp5n_bg=aa(cell2mat(seqs_bg)-64);
                 if flip3to5 % FLIPPED AND EXCHANGED RLIB LLIB, CHANGED half_nmerj
                     bg_rev=get_lib_prediction_v1(fliplr(seq_colp5n_bg),tot_l,...
-                        File2x,lib_nmer,l,fliplr(Rlib),fliplr(Llib),j,half_nmeri,gap_mod,lib_model_dat1,strnums);
+                        File2x,lib_nmer,l,fliplr(Rlib),fliplr(Llib),j,half_nmeri,gap_mod,lib_model_dat1,strnums_plus);
                 else
                     bg_rev=get_lib_prediction_v1(seq_colp5n_bg,tot_l,File2x,...
-                        lib_nmer,l,Llib,Rlib,j,half_nmerj,gap_mod,lib_model_dat1,strnums);
+                        lib_nmer,l,Llib,Rlib,j,half_nmerj,gap_mod,lib_model_dat1,strnums_plus);
                 end
                 
                 cts=cts+ctsi;

@@ -1,5 +1,5 @@
 % FUNCTION TO GET PREDICTED ABUNDANCE OF SEQUENCES IN THE LIBRARY 
-function bg0=get_lib_prediction_v1(seq_colp5n,pwm_l,File2x,lib_nmer,l,Llib,Rlib,gapm,half_nmeri,gap_mod,lib_model_dat1,strnums)
+function bg0=get_lib_prediction_v1(seq_colp5n,pwm_l,File2x,lib_nmer,l,Llib,Rlib,gapm,half_nmeri,gap_mod,lib_model_dat1,strnums_plus)
 
 if gap_mod==0
     gapm=0; half_nmeri=0;
@@ -13,10 +13,10 @@ Rlib_seq_col=aa(Rlib-64);
 
 lib_nmer=lib_nmer+1; % IF 5TH ORDER MARKOV MODEL IS USED, THE LENGTH OF FINAL SEQ IS 6MER
 
-C=textscan_mod_v1([File2x strnums{lib_nmer-1} '.order.model.' strnums{1} '.txt'],'%f%f','\t');
+C=textscan_mod_v1([File2x strnums_plus{1+lib_nmer-1} '.order.model.' strnums_plus{1+1} '.txt'],'%f%f','\t');
 count_6mer2=C{1};
 
-fname=[strrep(File2x,'.','_') strnums{lib_nmer-1} '_order_model_' strnums{1}];
+fname=[strrep(File2x,'.','_') strnums_plus{1+lib_nmer-1} '_order_model_' strnums_plus{1+1}];
 C=lib_model_dat1.(fname);
 count_6mer=C(:,1);
 
@@ -54,7 +54,7 @@ for i=1:l+l_Llib+l_Rlib-pwm_l+1
             bg2x=zeros(l_seqx,1);
             for ind=1:length(ix4)-lib_nmeri+1
                 strt=ix4(ind)-l_Llib;
-                fname=[strrep(File2x,'.','_') strnums{lib_nmeri-1} '.order.model.' strnums{strt} '.txt'];
+                fname=[strrep(File2x,'.','_') strnums_plus{1+lib_nmeri-1} '_order_model_' strnums_plus{1+strt}];
                 ix4_diff=ix4(ind+1:ind+lib_nmeri-1)-ix4(ind:ind+lib_nmeri-2);
                 pos_gapi=find(ix4_diff>1);
                 if ~isempty(pos_gapi) % IF NOT IN CONTINUATION
@@ -62,8 +62,8 @@ for i=1:l+l_Llib+l_Rlib-pwm_l+1
                         disp('error multi gaps');
                     end
                     gapx=ix4_diff(pos_gapi)-1;
-                    fname=[strrep(File2x,'.','_') strnums{lib_nmeri-1} '.order.model.' ...
-                        strnums{strt} '_' strnums{pos_gapi} '_' strnums{gapx} '.txt'];
+                    fname=[strrep(File2x,'.','_') strnums_plus{1+lib_nmeri-1} '_order_model_' ...
+                        strnums_plus{1+strt} '_' strnums_plus{1+pos_gapi} '_' strnums_plus{1+gapx}];
                 end
                 C=lib_model_dat1.(fname);
                 count_6mer=C(:,1);
