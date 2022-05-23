@@ -54,7 +54,7 @@ for i=1:l+l_Llib+l_Rlib-pwm_l+1
             bg2x=zeros(l_seqx,1);
             for ind=1:length(ix4)-lib_nmeri+1
                 strt=ix4(ind)-l_Llib;
-                File_name=[File2x num2str(lib_nmeri-1) '.order.model.' num2str(strt) '.txt'];
+                fname=[strrep(File2x,'.','_') num2str(lib_nmeri-1) '_order_model_' num2str(strt)];
                 ix4_diff=ix4(ind+1:ind+lib_nmeri-1)-ix4(ind:ind+lib_nmeri-2);
                 pos_gapi=find(ix4_diff>1);
                 if ~isempty(pos_gapi) % IF NOT IN CONTINUATION
@@ -62,12 +62,9 @@ for i=1:l+l_Llib+l_Rlib-pwm_l+1
                         disp('error multi gaps');
                     end
                     gapx=ix4_diff(pos_gapi)-1;
-                    File_name=[File2x num2str(lib_nmeri-1) '.order.model.' ...
+                    fname=[File2x num2str(lib_nmeri-1) '.order.model.' ...
                         num2str(strt) '_' num2str(pos_gapi) '_' num2str(gapx) '.txt'];
                 end
-                
-                fname=[strrep(File2x,'.','_') num2str(lib_nmeri-1) '_order_model_' num2str(strt)];
-                
                 C=lib_model_dat1.(fname);
                 count_6mer=C(:,1);
                 Lib_count_5meri=C(:,2);
